@@ -1,0 +1,20 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  app:
+    build: .
+    command: sh -c "python manage.py makemigrations && python manage.py migrate && python manage.py runserver 0.0.0.0:8000" # 8000 포트로 서버 실행
+    volumes:
+      - ./:/usr/src/app
+      - ./media:/usr/src/app/media # 미디어 폴더 동기화
+      - ./templates:/usr/src/app/templates # Templates 폴더 동기화ss
+      - ./static:/usr/src/app/static:cached # 캐시를 통해서 static 사용하도록
+    environment:
+      - "DJANGO_SETTINGS_MODULE=KIDS_TOOLS.settings"
+    restart: always
+    expose:
+      - "8000"
+    ports:
+      - "8000:8000"
+    hostname: app

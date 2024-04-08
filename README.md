@@ -1,92 +1,90 @@
-# backend-pre-task
 
-키즈노트 BE개발 사전과제 repository입니다.
-***
+<h1 align="center">Welcome to KidsNote_backend-pre-task 👋</h1>
 
 
-## BE 개발자 사전 과제
-```text
-안녕하세요
-키즈노트 백엔드에 관심을 가지고 지원해 주셔서 감사합니다. 🤗
-사전과제는 테스트의 목적이 아닌 지원자 분의 개발 스타일을 사전에 알아보고 맞춰가기 위해 요청드립니다.
-팀원과 협업을 한다는 생각으로 작업을 해 주시면 됩니다.
-정답이 따로 있지는 않기에 편하게 작업해 주세요. 😄
-```
-***
+### DOCKER 실행방법
+- ./dev_script.sh 실행 또는 docker-compose -f docker-compose.yaml up --build 에서 Docker를 실행해 줍니다.
+- 현재 requirements.txt 및 확인자 분의 환경에 영향을 미치지 않게 하기 위해 Docker로 구성하였습니다.
+- Docker를 실행하고 나면 localhot:8000/admin/을 통해 Django Admin에 접속할 수 있습니다.
 
-### 진행방법
-```text
-상세 진행 방법은 다음과 같습니다.
-```
-1. 도메인 요구사항을 읽고 어떤 내용의 작업을 진행하면 되는지 확인해 주세요.
-2. 기술적 요구사항에서 구현 시 기술적으로 어떤 점을 고려하면 되는지 확인해 주세요.
-3. 과제 repository에서 자신의 github으로 fork 해 주세요.
-4. 과제는 DB와 Model 설계, API를 개발하시면 됩니다.
-5. 작업이 완료되면 이메일로 개인 repository 링크를 첨부해 회신해 주세요.
+<p align="center">
+  <img src="https://github.com/Ji-Eon/KidsNote_backend-pre-task/blob/main/KIDS_TOOLS/git_images/docker_running.png?raw=true">
+</p>
 
-***
-### 도메인 요구사항
 
-```text
-주소록과 연락처 상세 내용을 구현해 주세요.
-Google의 주소록(https://contacts.google.com)을 참고해 주시면 이해가 편할 것 같습니다.
-```
-- 주소록
-  - 목록
-    - 목록에 출력될 필드는 다음과 같습니다.
-      - 프로필 사진
-      - 이름
-      - 이메일
-      - 전화번호
-      - 회사 (직책)
-      - 라벨
-    - 정렬
-      - 기본 출력은 등록 순서대로 정렬합니다.
-      - 이름, 이메일, 전화번호 중 하나를 선택하여 정렬할 수 있습니다.
-      - 정렬은 오름차순/내림차순/해제 순입니다.
-    - 페이징
-      - 스크롤 페이징 처리가 되도록합니다.
-  - 연락처 (상세보기/입력)
-    - 입/출력 필드는 다음과 같습니다.
-      - 프로필 사진 : url 입력 방식
-      - 이름
-      - 이메일
-      - 전화번호
-      - 회사
-      - 직책
-      - 메모
-      - 라벨
-        - 사용자 정의 라벨
-        - 연락처 1개에 라벨 다수 연결 가능
-      - 기타 항목 추가
-        - 주소
-        - 생일
-        - 웹사이트
+### DOCKER 환경 기반 Django Admin Superuser 생성하기
+- docker ps 명령어를 통해 Container id를 확인합니다.
+- docker exec -it {Container_id} /bin/bash 로 Docker Container로 진입합니다.
+- python manage.py createsuperuser를 입력하여 Django SuperUser 계정을 생성합니다.
 
-***
-### 기술적 요구사항
-```text
-기술적 요구사항은 다음과 같습니다.
-```
-- 환경
-  - python : 3.9.3
-  - django : 3.2.20
-  - django-rest-framework : 3.14.0
-  - MySQL or SQLite (택1)
-  - 기타 필요한 패키지 사용 가능하며, `requirements.txt`에 추가 
-- Backend
-  - django ORM의 model을 이용해 주세요.
-  - 디렉터리 구조는 본인이 생각하는 Best Practice로 구성해 주세요.
-  - **RESTfull** 하게 API를 설계해 주세요.
-- Database
-  - DB는 MySQL 또는 SQLite를 사용해 주세요.
-  - `/db` 디렉터리에 설계한 스키마 및 데이터를 정의해 주세요
-    - schema.sql : DB 스키마를 CREATE 문으로 작성해 주세요
-    - data.sql : 기본 데이터가 필요하다면 INSERT 문으로 넣어주세요
-  - 설계하신 ERD가 있으시면 `/db` 디렉터리 안에 추가해 주시면 도움이 될 것 같습니다. (`선택사항`)
-- 기타 (`선택사항`)
-  - 선택사항으로 작성하실 경우에만 확인합니다.
-    - swagger
-    - test code
 
-  
+### Python Module
+
+- python : 3.9.3
+- django : 3.2.20
+- django-rest-framework : 3.14.0
+- drf-yasg : 1.21.7
+
+### Database
+- SQLite
+
+### Swagger 및 연락처 관리 API
+
+이 문서는 로컬 환경에서 연락처 관리 API를 사용하기 위한 가이드를 제공합니다.
+
+## 시작하기
+
+API 문서에 접근하려면 브라우저를 통해 [localhost:8000/swagger/](http://localhost:8000/swagger/)에 접속하세요.
+
+<p align="center">
+  <img src="https://github.com/Ji-Eon/KidsNote_backend-pre-task/blob/main/KIDS_TOOLS/git_images/swagger_ui.png?raw=true">
+</p>
+
+## API 엔드포인트
+
+- `POST /contact/data`: 데이터셋을 미리 정의하였으며, 해당 API 호출 시 ERD에 정의된 대로 데이터가 데이터베이스에 저장됩니다.
+- `GET /contact/list`: 저장된 연락처 목록을 조회합니다.
+- `GET /contact/sort`: 연락처 목록을 조회하고 필요에 따라 이름(name), 이메일(email), 전화번호(phone_number)로 정렬합니다. 정렬 순서는 쿼리 파라미터를 통해 지정할 수 있습니다.
+- `GET /contact/search`: id 값을 통해 특정 연락처의 정보를 디테일하게 조회할 수 있습니다.
+- `POST /contact/create`: 새로운 연락처를 생성할 수 있습니다.
+
+## 기술 스택
+
+- Django REST Framework: 연락처 데이터를 관리하고 RESTful API를 제공합니다.
+- drf-yasg: Swagger를 통한 API 문서 자동화를 지원합니다. 
+
+## 사용 방법
+
+각 API의 상세한 사용 방법은 Swagger 문서를 참고하시기 바랍니다. 예를 들어, `/contact/sort` 엔드포인트는 다음과 같이 사용할 수 있습니다:
+
+
+## data Upload DjangoAdmin 입력 결과 화면
+- `POST /contact/data` : API를 호출하면 이미지와 같이 데이터가 자동으로 저장 됩니다.
+
+<p align="center">
+  <img src="https://github.com/Ji-Eon/KidsNote_backend-pre-task/blob/main/KIDS_TOOLS/git_images/data_contents_result.png?raw=true">
+</p>
+
+
+## Contact ERD Description
+
+-  `Contact` 연락처 세부 정보를 담고 있는 모델, 
+
+-  `CompanyInfo` 회사 이름과 직책을 포함한 정보를 담고 있는 모델
+
+-  `Label` 모델은 연락처를 분류하는 데 사용되며, 각 연락처에 하나 이상의 라벨을 연결할 수 있습니다.
+
+<p align="center">
+  <img src="https://github.com/Ji-Eon/KidsNote_backend-pre-task/blob/main/KIDS_TOOLS/db/contact_erd.png?raw=true">
+</p>
+
+## Developer
+
+👤 **Ji-Eon**
+=======
+
+* Github: [@Ji-Eon](https://github.com/Ji-Eon)
+
+## Show your support
+
+Give a ⭐️ if this project helped you!
